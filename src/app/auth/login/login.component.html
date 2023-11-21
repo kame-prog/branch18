@@ -1,0 +1,216 @@
+<div class="Bgdiv" [style.background-image]="'url(/assets/Images/cover.jpg)'">
+<div class="container justify-content-center d-flex align-items-center " style="height:100vh; width:fit-content ">
+  <form #loginform="ngForm">
+  <div class="card" >
+   
+      <div class="row align-items-center mx-0 px-0" >
+        <div class="col-6 mx-0 px-0 ">
+          <button type="button" class="text-center" (click)="togglebuttonbool=false" [ngClass]="togglebuttonbool===false? 'activediv':'inactivediv'">Login</button>
+        </div>
+        <div class="col-6 mx-0 px-0" >
+          <button type="button" class="text-center" (click)="togglebuttonbool=true" [ngClass]="togglebuttonbool===false? 'inactivediv':'activediv'">Register</button>
+        </div>
+      </div>
+  <div class="row justify-content-center align-items-center ">
+   
+      <div class="col-2 mx-0 px-0 rounded-social-buttons ">
+        <a
+          class="social-button facebook"
+          target="_blank"
+          ><i type="button" class="fa-brands fa-facebook"></i>
+         
+         </a>
+        </div>
+        <div class="col-2 mx-0 px-0 rounded-social-buttons "> 
+          <a
+          class="social-button twitter"
+          target="_blank"
+          ><i class="fab fa-twitter"></i
+        ></a>
+        </div>
+      <div class="col-2 mx-0 px-0 rounded-social-buttons ">
+        <a
+          class="social-button google"
+          target="_blank"
+          ><i class="fab fa-google"></i
+        ></a>
+  
+  </div>
+  </div>
+  <div class="row">
+      <div class="col-12 mb-3">
+             <div class="input-group">
+               <input type="text" 
+                name="username"
+                #name="ngModel" 
+                pattern="[a-zA-Z]+$"
+                ngModel class=" usernamefield form-control" 
+                placeholder="User Id" 
+                id="validationDefaultUsername"
+                aria-describedby="inputGroupPrepend2"
+                required
+               />
+               
+           </div>
+           <span *ngIf="name.invalid && name.touched" class="ValidatioMsg">Please Enter Valid Username</span>
+         </div>
+  </div>
+  <div class="row" *ngIf="togglebuttonbool==true">
+    <div class="col-12">
+      <input  
+      name="Emailid"
+      #Emailid="ngModel"
+      email
+      ngModel type="email" 
+      placeholder="Email Id" 
+      class="userIdfield form-control"
+      required
+      /> 
+      <span *ngIf="Emailid.invalid && Emailid.touched" class="ValidatioMsg">Please Enter Valid Email Format</span>
+    </div>   
+  </div>
+  <div class="row mt-2" >
+    <div class="col-12">
+    
+        <input
+          type="password"
+          placeholder="Enter Password"
+          class="userpasswordfield form-control"
+          id="exampleInputPassword1"
+          name="password"
+          #password="ngModel"
+          ngModel
+          minlength="6"
+          required
+        /> 
+        <span *ngIf="password.invalid && password.touched" class="ValidatioMsg">Please Enter Valid Format Password</span>
+  </div>   
+
+  </div>
+
+  <div class="row ml-3 remembersection">
+    
+      <div class="col-12 form-check " *ngIf="togglebuttonbool != true">
+        <input type="checkbox" class="checboxform form-check-input d-flex" id="exampleCheck1" />
+        <label class="form-check-label " for="exampleCheck1"
+       
+          >Remember me</label>
+      </div>
+      <div class=" col-12 form-check" *ngIf="togglebuttonbool==true">
+        <input type="checkbox" class="checboxform form-check-input d-flex" id="exampleCheck1" />
+        <label class="form-check-label " for="exampleCheck1"
+          >I agree to terms and condition</label>
+      </div>
+   </div>
+   <div class="row mx-0 px-0">
+    <div class="col-12 justify-content-center d-flex" >
+      <button class="btnsubmit btn btn-primary" type="button">{{togglebuttonbool == false ? 'Login':'Register'}}</button>
+    </div>
+  </div>
+   
+  </div>
+</form>
+</div>
+
+</div>
+<!-- <div class="row">
+  <section class="justify-content-center logincontainer " style="height:100vh">
+  <div clas="container border card">
+   
+       <div class="row toptogglebutton border border-dark-subtle">
+       <div class="col-6 mx-0 px-0">
+         <button class="text-center" (click)="togglebuttonbool=false" [ngClass]="togglebuttonbool===false? 'activediv':'inactivediv'">Login</button>
+       </div>
+       <div class="col-6  mx-0 px-0" >
+         <button class="text-center" (click)="togglebuttonbool=true" [ngClass]="togglebuttonbool===false? 'inactivediv':'activediv'">Register</button>
+       </div>
+       </div>
+       <div class="row social-buttons align-items-center justify-content-center d-flex mx-0 px-0" >
+   
+           <div class="col-2 rounded-social-buttons ">
+             <a
+               class="social-button facebook"
+               target="_blank"
+               ><i class="fa-brands fa-facebook"></i>
+              
+              </a>
+             </div>
+             <div class="col-2 rounded-social-buttons "> 
+               <a
+               class="social-button twitter"
+               target="_blank"
+               ><i class="fab fa-twitter"></i
+             ></a>
+             </div>
+           <div class="col-2 rounded-social-buttons ">
+             <a
+               class="social-button google"
+               target="_blank"
+               ><i class="fab fa-google"></i
+             ></a>
+           </div>
+       </div>
+       <div class="row">
+         <div class="col-12 mb-3">
+            
+             <div class="input-group">
+               <input type="text" class=" usernamefield form-control" placeholder="User Id" id="validationDefaultUsername"
+                 aria-describedby="inputGroupPrepend2"
+                 required
+               />
+           </div>
+         </div>
+       </div>
+       <div class="row ">
+        <div class="col-12">
+        
+            <input *ngIf="togglebuttonbool==true"
+              type="email"
+              placeholder="Email Id"
+              class="userpasswordfield form-control"
+              id="exampleInputPassword1"
+            /> 
+      </div>   
+      </div>
+       <div class="row mt-2" >
+         <div class="col-12">
+         
+             <input
+               type="password"
+               placeholder="Enter Password"
+               class="userpasswordfield form-control"
+               id="exampleInputPassword1"
+             /> 
+       </div>   
+       </div>
+      
+       <div class="row remembersection">
+        <div class="col ">
+          <div class=" form-check" *ngIf="togglebuttonbool != true">
+            <input type="checkbox" class="checboxform form-check-input d-flex" id="exampleCheck1" />
+            <label class="form-check-label " for="exampleCheck1"
+           
+              >Remember me</label
+            >
+          </div>
+          <div class=" form-check" *ngIf="togglebuttonbool==true">
+            <input type="checkbox" class="checboxform form-check-input d-flex" id="exampleCheck1" />
+            <label class="form-check-label " for="exampleCheck1"
+         
+              >I agree to terms and condition</label
+            >
+          </div>
+        </div>
+       </div>
+       <div class="row ">
+         <div class="col justify-content-center d-flex" >
+           <button class="btnsubmit btn btn-primary" type="button">Login</button>
+         </div>
+       </div>
+
+   </div>
+
+</section>
+</div> -->
+
+
